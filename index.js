@@ -20,4 +20,10 @@ app.post('/create', function(req,res){
     })
 });
 
+app.get('/files/:filesname', function(req,res){
+    fs.readFile(`./files/${req.params.filesname}`,"utf-8", function(err, filedata){
+        res.render('show', {filesname: req.params.filesname, filedata: filedata})
+    })
+});
+
 app.listen(3000);
